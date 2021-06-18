@@ -30,7 +30,10 @@ s.remove_staging_dirs()
 
 templated_files = common.py_library(microgenerator=True)
 
-excludes=[".coveragerc"]
+excludes=[
+    ".coveragerc",
+    ".kokoro/docs/*"
+]
 s.move(templated_files, excludes=excludes)
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
