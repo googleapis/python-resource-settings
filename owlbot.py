@@ -31,9 +31,17 @@ s.remove_staging_dirs()
 templated_files = common.py_library(microgenerator=True)
 
 excludes=[
-    ".coveragerc",
-    ".kokoro/docs/*"
+    ".coveragerc"
 ]
 s.move(templated_files, excludes=excludes)
+
+# Redirect publishing to the staging branch for Cloud RAD to avoid making this public.
+# Producing the output helps verify that content gets generated but will not affect rest of the
+# existing pipeline.
+s.replace(
+    ".kokoro/docs/common.cfg",
+    r'value: "docs-staging-v2"',
+    r'value: "docs-staging-v2-staging"'
+)
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
