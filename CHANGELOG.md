@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.2.1](https://www.github.com/googleapis/python-resource-settings/compare/v0.2.0...v0.2.1) (2021-07-14)
+
+
+### Bug Fixes
+
+* disable always_use_jwt_access ([3a2782a](https://www.github.com/googleapis/python-resource-settings/commit/3a2782aad33ab253197c4a54d04d4beae8c48c75))
+* disable always_use_jwt_access ([#11](https://www.github.com/googleapis/python-resource-settings/issues/11)) ([3a2782a](https://www.github.com/googleapis/python-resource-settings/commit/3a2782aad33ab253197c4a54d04d4beae8c48c75))
+
 ## [0.2.0](https://www.github.com/googleapis/python-resource-settings/compare/v0.1.0...v0.2.0) (2021-06-22)
 
 
