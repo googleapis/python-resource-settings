@@ -3,14 +3,14 @@
 ### [0.3.2](https://www.github.com/googleapis/python-resource-settings/compare/v0.3.1...v0.3.2) (2021-07-29)
 
 
-### Features
-
-* add Samples section to CONTRIBUTING.rst ([#19](https://www.github.com/googleapis/python-resource-settings/issues/19)) ([a61c2b5](https://www.github.com/googleapis/python-resource-settings/commit/a61c2b54ccdf282dcdb227805c1da8b9b46e885c))
-
-
 ### Bug Fixes
 
 * enable self signed jwt for grpc ([#23](https://www.github.com/googleapis/python-resource-settings/issues/23)) ([1d2ebf9](https://www.github.com/googleapis/python-resource-settings/commit/1d2ebf9dd19a748abc6b60944d5a4b58c22bb33e))
+
+
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#19](https://www.github.com/googleapis/python-resource-settings/issues/19)) ([a61c2b5](https://www.github.com/googleapis/python-resource-settings/commit/a61c2b54ccdf282dcdb227805c1da8b9b46e885c))
 
 
 ### Miscellaneous Chores
