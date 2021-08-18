@@ -80,5 +80,5 @@ Next Steps
 -  View this `README`_ to see the full list of Cloud
    APIs that we cover.
 
-.. _Resource Settings Product documentation:  https://cloud.google.com/resource-settings/docs
+.. _Resource Settings Product documentation:  https://cloud.google.com/resource-manager/docs/resource-settings/overview
 .. _README: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
