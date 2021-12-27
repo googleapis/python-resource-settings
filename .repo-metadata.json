@@ -12,5 +12,5 @@
     "default_version": "v1",
     "codeowner_team": "",
     "api_shortname": "resourcesettings",
-    "library_type": ""
+    "library_type": "GAPIC_AUTO"
 }
