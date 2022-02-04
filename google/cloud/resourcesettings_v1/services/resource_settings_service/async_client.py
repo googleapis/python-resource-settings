@@ -232,6 +232,25 @@ class ResourceSettingsServiceAsyncClient:
         r"""Lists all the settings that are available on the Cloud resource
         ``parent``.
 
+
+        .. code-block::
+
+            from google.cloud import resourcesettings_v1
+
+            def sample_list_settings():
+                # Create a client
+                client = resourcesettings_v1.ResourceSettingsServiceClient()
+
+                # Initialize request argument(s)
+                request = resourcesettings_v1.ListSettingsRequest(
+                    parent="parent_value",
+                )
+
+                # Make the request
+                page_result = client.list_settings(request=request)
+                for response in page_result:
+                    print(response)
+
         Args:
             request (Union[google.cloud.resourcesettings_v1.types.ListSettingsRequest, dict]):
                 The request object. The request for ListSettings.
@@ -328,6 +347,26 @@ class ResourceSettingsServiceAsyncClient:
         Returns a ``google.rpc.Status`` with
         ``google.rpc.Code.NOT_FOUND`` if the setting does not exist.
 
+
+        .. code-block::
+
+            from google.cloud import resourcesettings_v1
+
+            def sample_get_setting():
+                # Create a client
+                client = resourcesettings_v1.ResourceSettingsServiceClient()
+
+                # Initialize request argument(s)
+                request = resourcesettings_v1.GetSettingRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                response = client.get_setting(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.resourcesettings_v1.types.GetSettingRequest, dict]):
                 The request object. The request for GetSetting.
@@ -420,6 +459,25 @@ class ResourceSettingsServiceAsyncClient:
 
         Note: the supplied setting will perform a full overwrite of the
         ``local_value`` field.
+
+
+        .. code-block::
+
+            from google.cloud import resourcesettings_v1
+
+            def sample_update_setting():
+                # Create a client
+                client = resourcesettings_v1.ResourceSettingsServiceClient()
+
+                # Initialize request argument(s)
+                request = resourcesettings_v1.UpdateSettingRequest(
+                )
+
+                # Make the request
+                response = client.update_setting(request=request)
+
+                # Handle response
+                print(response)
 
         Args:
             request (Union[google.cloud.resourcesettings_v1.types.UpdateSettingRequest, dict]):
