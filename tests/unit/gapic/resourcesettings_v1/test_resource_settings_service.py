@@ -1740,7 +1740,6 @@ def test_resource_settings_service_transport_auth_adc(transport_class):
     [
         transports.ResourceSettingsServiceGrpcTransport,
         transports.ResourceSettingsServiceGrpcAsyncIOTransport,
-        transports.ResourceSettingsServiceRestTransport,
     ],
 )
 def test_resource_settings_service_transport_auth_gdch_credentials(transport_class):
