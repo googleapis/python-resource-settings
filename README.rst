@@ -3,7 +3,7 @@ Python Client for Resource Settings API
 
 |stable| |pypi| |versions|
 
-`Resource Settings API`_: 
+`Resource Settings API`_: allows users to control and modify the behavior of their GCP resources (e.g., VM, firewall, Project, etc.) across the Cloud Resource Hierarchy.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
