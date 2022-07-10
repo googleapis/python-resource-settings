@@ -1,7 +1,7 @@
 {
     "name": "resourcesettings",
     "name_pretty": "Resource Settings",
-    "product_documentation": "https://cloud.google.com/resource-settings",
+    "product_documentation": "https://cloud.google.com/resource-manager/docs/reference/resource-settings/rest",
     "client_documentation": "https://cloud.google.com/python/docs/reference/resourcesettings/latest",
     "issue_tracker": "",
     "release_level": "stable",
