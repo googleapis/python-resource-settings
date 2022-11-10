@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -58,7 +69,7 @@ class ResourceSettingsServiceClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[ResourceSettingsServiceTransport]:
         """Returns an appropriate transport class.
 
@@ -343,7 +354,7 @@ class ResourceSettingsServiceClient(metaclass=ResourceSettingsServiceClientMeta)
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, ResourceSettingsServiceTransport, None] = None,
+        transport: Optional[Union[str, ResourceSettingsServiceTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -441,11 +452,11 @@ class ResourceSettingsServiceClient(metaclass=ResourceSettingsServiceClientMeta)
 
     def list_settings(
         self,
-        request: Union[resource_settings.ListSettingsRequest, dict] = None,
+        request: Optional[Union[resource_settings.ListSettingsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListSettingsPager:
         r"""Lists all the settings that are available on the Cloud resource
@@ -560,11 +571,11 @@ class ResourceSettingsServiceClient(metaclass=ResourceSettingsServiceClientMeta)
 
     def get_setting(
         self,
-        request: Union[resource_settings.GetSettingRequest, dict] = None,
+        request: Optional[Union[resource_settings.GetSettingRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource_settings.Setting:
         r"""Gets a setting.
@@ -663,10 +674,10 @@ class ResourceSettingsServiceClient(metaclass=ResourceSettingsServiceClientMeta)
 
     def update_setting(
         self,
-        request: Union[resource_settings.UpdateSettingRequest, dict] = None,
+        request: Optional[Union[resource_settings.UpdateSettingRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource_settings.Setting:
         r"""Updates a setting.
