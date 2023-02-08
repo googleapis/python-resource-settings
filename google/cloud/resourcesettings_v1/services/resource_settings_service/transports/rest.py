@@ -14,24 +14,21 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import gapic_v1, path_template, rest_helpers, rest_streaming
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -41,8 +38,8 @@ except AttributeError:  # pragma: NO COVER
 
 from google.cloud.resourcesettings_v1.types import resource_settings
 
-from .base import ResourceSettingsServiceTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
-
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import ResourceSettingsServiceTransport
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -95,7 +92,12 @@ class ResourceSettingsServiceRestInterceptor:
 
 
     """
-    def pre_get_setting(self, request: resource_settings.GetSettingRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[resource_settings.GetSettingRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_setting(
+        self,
+        request: resource_settings.GetSettingRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[resource_settings.GetSettingRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_setting
 
         Override in a subclass to manipulate the request or metadata
@@ -103,7 +105,9 @@ class ResourceSettingsServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_get_setting(self, response: resource_settings.Setting) -> resource_settings.Setting:
+    def post_get_setting(
+        self, response: resource_settings.Setting
+    ) -> resource_settings.Setting:
         """Post-rpc interceptor for get_setting
 
         Override in a subclass to manipulate the response
@@ -111,7 +115,12 @@ class ResourceSettingsServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_settings(self, request: resource_settings.ListSettingsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[resource_settings.ListSettingsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_settings(
+        self,
+        request: resource_settings.ListSettingsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[resource_settings.ListSettingsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_settings
 
         Override in a subclass to manipulate the request or metadata
@@ -119,7 +128,9 @@ class ResourceSettingsServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_list_settings(self, response: resource_settings.ListSettingsResponse) -> resource_settings.ListSettingsResponse:
+    def post_list_settings(
+        self, response: resource_settings.ListSettingsResponse
+    ) -> resource_settings.ListSettingsResponse:
         """Post-rpc interceptor for list_settings
 
         Override in a subclass to manipulate the response
@@ -127,7 +138,12 @@ class ResourceSettingsServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_setting(self, request: resource_settings.UpdateSettingRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[resource_settings.UpdateSettingRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_setting(
+        self,
+        request: resource_settings.UpdateSettingRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[resource_settings.UpdateSettingRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_setting
 
         Override in a subclass to manipulate the request or metadata
@@ -135,7 +151,9 @@ class ResourceSettingsServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_update_setting(self, response: resource_settings.Setting) -> resource_settings.Setting:
+    def post_update_setting(
+        self, response: resource_settings.Setting
+    ) -> resource_settings.Setting:
         """Post-rpc interceptor for update_setting
 
         Override in a subclass to manipulate the response
@@ -177,20 +195,21 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'resourcesettings.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[ResourceSettingsServiceRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "resourcesettings.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[ResourceSettingsServiceRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -229,7 +248,9 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -240,10 +261,11 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
         self._interceptor = interceptor or ResourceSettingsServiceRestInterceptor()
@@ -253,19 +275,24 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
         def __hash__(self):
             return hash("GetSetting")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: resource_settings.GetSettingRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> resource_settings.Setting:
+        def __call__(
+            self,
+            request: resource_settings.GetSettingRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> resource_settings.Setting:
             r"""Call the get setting method over HTTP.
 
             Args:
@@ -282,45 +309,48 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
                     The schema for settings.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=organizations/*/settings/*}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=folders/*/settings/*}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/settings/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=organizations/*/settings/*}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=folders/*/settings/*}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/settings/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_setting(request, metadata)
             pb_request = resource_settings.GetSettingRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -339,19 +369,24 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
         def __hash__(self):
             return hash("ListSettings")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: resource_settings.ListSettingsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> resource_settings.ListSettingsResponse:
+        def __call__(
+            self,
+            request: resource_settings.ListSettingsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> resource_settings.ListSettingsResponse:
             r"""Call the list settings method over HTTP.
 
             Args:
@@ -368,45 +403,48 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
                     The response from ListSettings.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=organizations/*}/settings',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{parent=folders/*}/settings',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*}/settings',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=organizations/*}/settings",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=folders/*}/settings",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*}/settings",
+                },
             ]
             request, metadata = self._interceptor.pre_list_settings(request, metadata)
             pb_request = resource_settings.ListSettingsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -425,19 +463,24 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
         def __hash__(self):
             return hash("UpdateSetting")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: resource_settings.UpdateSettingRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> resource_settings.Setting:
+        def __call__(
+            self,
+            request: resource_settings.UpdateSettingRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> resource_settings.Setting:
             r"""Call the update setting method over HTTP.
 
             Args:
@@ -454,21 +497,22 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
                     The schema for settings.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{setting.name=organizations/*/settings/*}',
-                'body': 'setting',
-            },
-{
-                'method': 'patch',
-                'uri': '/v1/{setting.name=folders/*/settings/*}',
-                'body': 'setting',
-            },
-{
-                'method': 'patch',
-                'uri': '/v1/{setting.name=projects/*/settings/*}',
-                'body': 'setting',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{setting.name=organizations/*/settings/*}",
+                    "body": "setting",
+                },
+                {
+                    "method": "patch",
+                    "uri": "/v1/{setting.name=folders/*/settings/*}",
+                    "body": "setting",
+                },
+                {
+                    "method": "patch",
+                    "uri": "/v1/{setting.name=projects/*/settings/*}",
+                    "body": "setting",
+                },
             ]
             request, metadata = self._interceptor.pre_update_setting(request, metadata)
             pb_request = resource_settings.UpdateSettingRequest.pb(request)
@@ -477,33 +521,35 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -519,28 +565,30 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
             return resp
 
     @property
-    def get_setting(self) -> Callable[
-            [resource_settings.GetSettingRequest],
-            resource_settings.Setting]:
+    def get_setting(
+        self,
+    ) -> Callable[[resource_settings.GetSettingRequest], resource_settings.Setting]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetSetting(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetSetting(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_settings(self) -> Callable[
-            [resource_settings.ListSettingsRequest],
-            resource_settings.ListSettingsResponse]:
+    def list_settings(
+        self,
+    ) -> Callable[
+        [resource_settings.ListSettingsRequest], resource_settings.ListSettingsResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListSettings(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListSettings(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_setting(self) -> Callable[
-            [resource_settings.UpdateSettingRequest],
-            resource_settings.Setting]:
+    def update_setting(
+        self,
+    ) -> Callable[[resource_settings.UpdateSettingRequest], resource_settings.Setting]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateSetting(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateSetting(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -550,6 +598,4 @@ class ResourceSettingsServiceRestTransport(ResourceSettingsServiceTransport):
         self._session.close()
 
 
-__all__=(
-    'ResourceSettingsServiceRestTransport',
-)
+__all__ = ("ResourceSettingsServiceRestTransport",)
